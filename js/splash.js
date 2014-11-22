@@ -32,7 +32,8 @@ function start(){
 	projectimg.style.margin = "0 auto";
 	projectimg.style.display ="block";
 	projectDiv.appendChild(projectimg);
-	
+	projectDiv.onclick=function(){window.location = 'http://jaurich.co/projects.html';};
+	projectDiv.style.cursor = 'pointer';
 
 	var photoDiv = document.createElement('div');
 	photoDiv.id = 'photo';
@@ -59,7 +60,8 @@ function start(){
 	blogimg.style.margin = "0 auto";
 	blogimg.style.display ="block";
 	blogDiv.appendChild(blogimg);
-	
+	blogDiv.onclick=function(){window.open("http://blog.jaurich.co");};
+	blogDiv.style.cursor = 'pointer';
 	
 	
 	var socialDiv = document.createElement('div');
@@ -81,9 +83,9 @@ function start(){
 	socialDiv.appendChild(fbImage);
 	socialDiv.appendChild(gthbImage);
 	socialDiv.appendChild(tmblrImage);
-	fbImage.onclick=function(){window.location = 'http://www.facebook.com/josh.aurich';};
-	tmblrImage.onclick=function(){window.location = 'http://eggsworth12.tumblr.com/';};
-	gthbImage.onclick=function(){window.location = 'http://github.com/aurichj';};
+	fbImage.onclick=function(){window.open("http://www.facebook.com/josh.aurich");};
+	tmblrImage.onclick=function(){window.open("http://eggsworth12.tumblr.com/");};
+	gthbImage.onclick=function(){window.open("http://github.com/aurichj");};
 	fbImage.style.cursor = 'pointer';
 	tmblrImage.style.cursor = 'pointer';
 	gthbImage.style.cursor = 'pointer';
@@ -99,6 +101,8 @@ function start(){
 	resumeimg.style.margin = "0 auto";
 	resumeimg.style.display ="block";
 	resumeDiv.appendChild(resumeimg);
+	resumeDiv.onclick=function(){window.open("/ViewerJS/#../resume/Josh_Aurich_Resume_ext.pdf");};
+	resumeDiv.style.cursor = 'pointer';
 	
 
 	var contactDiv = document.createElement('div');
@@ -173,11 +177,11 @@ function start(){
 		contentDiv.appendChild(vertContentDiv3);
 		//contentDiv.style.backgroundImage ='url("grey2X.png")';
 	}else{
-		projectDiv.style.cssText = buttonStyle;
+		projectDiv.style.cssText = buttonStyleClickable;
 		photoDiv.style.cssText = buttonStyleClickable;
-		blogDiv.style.cssText = buttonStyle;
+		blogDiv.style.cssText = buttonStyleClickable;
 		socialDiv.style.cssText = buttonStyle;
-		resumeDiv.style.cssText = buttonStyle;
+		resumeDiv.style.cssText = buttonStyleClickable;
 		contactDiv.style.cssText = buttonStyle;
 		
 		var vertSpaceDiv1 = document.createElement('div');

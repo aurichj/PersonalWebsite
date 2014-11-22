@@ -28,6 +28,7 @@ var maxScreenY = 3.577;
 var startMousePosition = new THREE.Vector3();
 var clock, time, delta;
 var frames = 60;
+var delayOne = false;
 for(i = 0; i < 4; i++){
 	screenCornerPositions[i] = new THREE.Vector3();
 }
@@ -130,14 +131,14 @@ function render() {
 			loading = false;
 			if(urlBar == "gallery"){
 				scene.remove(rootNode);
-				document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-				document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				document.getElementById("gallery").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-				document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-				//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				document.getElementById("gallery").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 				page = "gallery";		
 				popup = false;
 				refreshPage();
@@ -168,14 +169,14 @@ function render() {
 				rootNode.position.y = 0;
 			}else if(urlBar == "artist"){
 				scene.remove(rootNode);
-				document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-				document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-				document.getElementById("artist").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				document.getElementById("artistHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-				//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-				//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				document.getElementById("artist").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+				//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+				//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 				page = "artist";
 				popup = false;
 				refreshPage();
@@ -247,8 +248,13 @@ function render() {
 	
 	if(page == "featured"){
 		if(idle){
-			frames = 5;
+			if(delayOne == true){
+				frames = 5;
+			}else{
+				delayOne = true;
+			}
 		}else{
+			delayOne = false;
 			frames = 60;
 		}
 	}else if(page == "gallery"){
@@ -537,14 +543,14 @@ function onMouseClick(e){
 document.getElementById("featured").onmousedown = function (e) {
 	if(page != "featured" && !loading && e.clientY < 80){
 		scene.remove(rootNode);	
-		document.getElementById("featured").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "featured";
 		popup = false;
 		refreshPage();
@@ -556,14 +562,14 @@ document.getElementById("featured").onmousedown = function (e) {
 document.getElementById("featuredHidden").onmousedown = function (e) {
 	if(page != "featured" && !loading && e.clientY < 80){
 		scene.remove(rootNode);	
-		document.getElementById("featured").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "featured";
 		popup = false;
 		refreshPage();
@@ -581,14 +587,14 @@ document.getElementById("gallery").onmousedown = function (e) {
 			scene.remove(button3);
 			scene.remove(popupCube);
 		}	
-		document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "gallery";		
 		popup = false;
 		clicked = false;
@@ -610,14 +616,14 @@ document.getElementById("galleryHidden").onmousedown = function (e) {
 			scene.remove(button3);
 			scene.remove(popupCube);
 		}
-		document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "gallery";
 		popup = false;
 		clicked = false;
@@ -637,14 +643,14 @@ document.getElementById("artist").onmousedown = function (e) {
 			scene.remove(button2);
 			scene.remove(button3);
 		}		
-		document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "artist";
 		refreshPage();
 		window.history.pushState('artist', 'Joshua Aurich - Photography.', '/artist');
@@ -660,14 +666,14 @@ document.getElementById("artistHidden").onmousedown = function (e) {
 			scene.remove(button2);
 			scene.remove(button3);
 		}		
-		document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		//document.getElementById("contact").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		//document.getElementById("contactHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		//document.getElementById("contact").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		//document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "artist";
 		refreshPage();
 		window.history.pushState('artist', 'Joshua Aurich - Photography.', '/artist');
@@ -683,14 +689,14 @@ document.getElementById("contact").onmousedown = function (e) {
 			scene.remove(button2);
 			scene.remove(button3);
 		}
-		document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("contact").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("contactHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("contact").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "contact";
 		refreshPage();
 		window.history.pushState('contact', 'Joshua Aurich - Photography.', '/contact');
@@ -706,14 +712,14 @@ document.getElementById("contactHidden").onmousedown = function (e) {
 			scene.remove(button2);
 			scene.remove(button3);
 		}
-		document.getElementById("featured").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("featuredHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("gallery").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("galleryHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("artist").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("artistHidden").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
-		document.getElementById("contact").style.cssText = 'cursor: default;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
-		document.getElementById("contactHidden").style.cssText = 'cursor: default;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featured").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("featuredHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("gallery").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("galleryHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("artist").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("artistHidden").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
+		document.getElementById("contact").style.cssText = 'cursor: pointer;display: none;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #A7A7A7;';
+		document.getElementById("contactHidden").style.cssText = 'cursor: pointer;display: inline;height: 20px;font-family: Bebas Neue Regular; font-size:100%;float: right;width: 68px;position: relative; top: 65; color: #000000;';
 		page = "contact";
 		refreshPage();
 		window.history.pushState('contact', 'Joshua Aurich - Photography.', '/contact');
